@@ -8,12 +8,13 @@ import org.bukkit.entity.Player;
 import javax.inject.Inject;
 @Commander(
         name = "yes",
-        description = "投下贊成票"
+        description = "投下贊成票",
+        playerOnly = true
 )
 
 public class VoteKickYesCMD implements CommandNode {
     @Inject
-    private KickInfo status;
+    private KickManager status;
     @Override
     public void execute(CommandSender sender) {
         if (status.getStatus()){

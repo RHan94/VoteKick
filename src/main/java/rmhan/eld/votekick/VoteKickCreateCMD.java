@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import javax.inject.Inject;
 
@@ -18,32 +17,32 @@ import javax.inject.Inject;
 )
 public class VoteKickCreateCMD implements CommandNode {
     @CommandArg(order = 0)
-    private Player player;
+    private Player Target;
     @CommandArg(order = 1)
-    private String reason;
+    private String Reason;
     @Inject
-    private KickInfo status;
+    private KickManager Status;
     @Inject
-    private ScheduleService service;
+    private ScheduleService Service;
     @Override
     public void execute(CommandSender sender) {
-        if (!status.getStatus()){
-            status.setInstance((Player)sender,player,reason);
-            Bukkit.broadcastMessage("請投票:\n" + status.getInfo());
+        if (!Status.getStatus()){
+            Status.setInstance((Player)sender,Target,Reason);
+            Bukkit.broadcastMessage("請投票:\n" + Status.getInfo());
             Bukkit.broadcastMessage("輸入 /vk yes 或 /vk no來投票");
-            status.AddYes((Player) sender);
-            service.injectTask(new BukkitRunnable() {
+            Status.AddYes((Player) sender);
+            Service.injectTask(new BukkitRunnable() {
                 @Override
                 public void run() {
-                    if (Integer.parseInt(status.getYesNums()) > Integer.parseInt(status.getNoNums())){
-                        Bukkit.broadcastMessage("投票結束，比數為" + status.getYesNums() + ":" + Integer.parseInt(status.getNoNums()));
-                        player.kick();
-                        Bukkit.broadcastMessage("已將" + player.getName() + "以" + reason + "為由踢除");
+                    if (Integer.parseInt(Status.getYesNums()) > Integer.parseInt(Status.getNoNums())){
+                        Bukkit.broadcastMessage("投票結束，比數為" + Status.getYesNums() + ":" + Integer.parseInt(Status.getNoNums()));
+                        Target.kickPlayer(Reason);
+                        Bukkit.broadcastMessage("已將" + Target.getName() + "以" + Reason + "為由踢除");
                      }else{
-                        Bukkit.broadcastMessage("投票結束，比數為" + status.getYesNums() + ":" + Integer.parseInt(status.getNoNums()));
+                        Bukkit.broadcastMessage("投票結束，比數為" + Status.getYesNums() + ":" + Integer.parseInt(Status.getNoNums()));
                         Bukkit.broadcastMessage("贊成票數未高於否決票數，不予懲處");
                     }
-                    status.EndVote();
+                    Status.EndVote();
                 }
             }).asynchronous(false).timeout(200L).run(VoteKick.getProvidingPlugin(VoteKick.class));
 

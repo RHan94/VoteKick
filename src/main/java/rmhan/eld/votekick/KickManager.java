@@ -5,23 +5,25 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KickInfo{
-    private static KickInfo instance;
+public class KickManager {
+    private static KickManager instance;
 
-    private Player sponsor;
+    private Player Sponsor;
     private Player Target;
     private String Reason;
     private static Boolean Status = false; //false: 尚未有投票被發起
-    private List Players = new ArrayList();
+    private List<Player> Players = new ArrayList();
 
     private int Yes = 0;
     private int No = 0;
 
     public void setInstance(Player s,Player t,String r) {
-        sponsor = s;
+        Sponsor = s;
         Target = t;
         Reason = r;
         Players.clear();
+        Yes = 0;
+        No = 0;
         Status = true;
     }
 
@@ -33,7 +35,7 @@ public class KickInfo{
     }
     public String getInfo(){
         if (Status == true) {
-            return "發起人: " + sponsor.getName() + "\n對象: " + Target.getName() + "\n原因:" + Reason;
+            return "發起人: " + Sponsor.getName() + "\n對象: " + Target.getName() + "\n原因:" + Reason;
         }else{
             return "尚未有投票被發起";
         }

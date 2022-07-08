@@ -9,12 +9,13 @@ import javax.inject.Inject;
 
 @Commander(
         name = "no",
-        description = "投下否決票"
+        description = "投下否決票",
+        playerOnly = true
 )
 
 public class VoteKickNoCMD implements CommandNode {
     @Inject
-    private KickInfo status;
+    private KickManager status;
     @Override
     public void execute(CommandSender sender) {
         if (status.getStatus()){

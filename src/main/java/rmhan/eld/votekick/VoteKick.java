@@ -5,8 +5,8 @@ import com.ericlam.mc.eld.ELDBukkit;
 import com.ericlam.mc.eld.ELDBukkitPlugin;
 import com.ericlam.mc.eld.ServiceCollection;
 @ELDBukkit(
-        registry = Registry.class, //指向註冊class
-        lifeCycle = LifeCycle.class //指向生命週期class
+        registry = Registry.class,
+        lifeCycle = LifeCycle.class
 )
 public final class VoteKick extends ELDBukkitPlugin {
 
@@ -18,6 +18,6 @@ public final class VoteKick extends ELDBukkitPlugin {
 
     @Override
     public void bindServices(ServiceCollection serviceCollection) {
-        serviceCollection.addSingleton(KickInfo.class);
+        serviceCollection.addSingleton(KickManager.class);
     }
 }
