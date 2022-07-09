@@ -2,15 +2,19 @@ package rmhan.eld.votekick;
 
 import org.bukkit.entity.Player;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 public class KickManager {
+    @Inject
+    private static KickConfig config;
     private static KickManager instance;
 
     private Player Sponsor;
     private Player Target;
     private String Reason;
+    private static Boolean Enable = config.Enable;
     private static Boolean Status = false; //false: 尚未有投票被發起
     private List<Player> Players = new ArrayList();
 
@@ -61,5 +65,11 @@ public class KickManager {
         Players.add(p);
         No++;
         return true;
+    }
+    public void ToggleEnable(){
+        Enable = !Enable;
+    }
+    public boolean getEnable(){
+        return Enable;
     }
 }
