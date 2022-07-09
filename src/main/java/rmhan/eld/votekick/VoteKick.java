@@ -19,5 +19,6 @@ public final class VoteKick extends ELDBukkitPlugin {
     @Override
     public void bindServices(ServiceCollection serviceCollection) {
         serviceCollection.addSingleton(KickManager.class);
+        serviceCollection.addConfiguration(KickConfig.class);
     }
 }

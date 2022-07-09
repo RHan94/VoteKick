@@ -24,6 +24,8 @@ public class VoteKickCreateCMD implements CommandNode {
     private KickManager Status;
     @Inject
     private ScheduleService Service;
+    @Inject
+    private KickConfig config;
     @Override
     public void execute(CommandSender sender) {
         if (!Status.getStatus()){
@@ -44,7 +46,7 @@ public class VoteKickCreateCMD implements CommandNode {
                     }
                     Status.EndVote();
                 }
-            }).asynchronous(false).timeout(200L).run(VoteKick.getProvidingPlugin(VoteKick.class));
+            }).asynchronous(false).timeout(20 * 60 * config.VoteMins).run(VoteKick.getProvidingPlugin(VoteKick.class));
 
         }else{
             sender.sendMessage("請等待目前的投票表決後，再次發起。");
