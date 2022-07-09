@@ -3,6 +3,7 @@ package rmhan.eld.votekick;
 import org.bukkit.entity.Player;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,12 @@ public class KickManager {
     }
     public void ToggleEnable(){
         Enable = !Enable;
+        config.Enable = Enable;
+        try {
+            config.getController().save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public boolean getEnable(){
         return Enable;
