@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KickManager {
+    private final KickConfig config;
     @Inject
-    private static KickConfig config;
-    private static KickManager instance;
-
+    public KickManager(KickConfig config){
+        this.config = config;
+        this.Enable = config.Enable;
+    }
     private Player Sponsor;
     private Player Target;
     private String Reason;
-    private static Boolean Enable = config.Enable;
-    private static Boolean Status = false; //false: 尚未有投票被發起
+    private boolean Enable;
+    private  Boolean Status = false; //false: 尚未有投票被發起
     private List<Player> Players = new ArrayList();
 
     private int Yes = 0;
