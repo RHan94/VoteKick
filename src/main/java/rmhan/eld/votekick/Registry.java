@@ -14,6 +14,7 @@ public class Registry implements ComponentsRegistry {
             c.command(VoteKickCreateCMD.class);
             c.command(VoteKickYesCMD.class);
             c.command(VoteKickNoCMD.class);
+            c.command(VoteKickEnableCMD.class);
         });
     }
 
