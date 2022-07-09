@@ -1,4 +1,4 @@
-package rmhan.eld.votekick;
+package rmhan.eld.votekick.Commands;
 
 import com.ericlam.mc.eld.annotations.CommandArg;
 import com.ericlam.mc.eld.annotations.Commander;
@@ -8,6 +8,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import rmhan.eld.votekick.KickConfig;
+import rmhan.eld.votekick.KickManager;
+import rmhan.eld.votekick.VoteKick;
 
 import javax.inject.Inject;
 
