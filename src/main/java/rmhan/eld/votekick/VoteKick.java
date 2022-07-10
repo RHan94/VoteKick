@@ -4,7 +4,7 @@ import com.ericlam.mc.eld.BukkitManagerProvider;
 import com.ericlam.mc.eld.ELDBukkit;
 import com.ericlam.mc.eld.ELDBukkitPlugin;
 import com.ericlam.mc.eld.ServiceCollection;
-import rmhan.eld.votekick.Logs.KickLog;
+import rmhan.eld.votekick.Logs.VoteLog;
 
 @ELDBukkit(
         registry = Registry.class,
@@ -22,6 +22,6 @@ public final class VoteKick extends ELDBukkitPlugin {
     public void bindServices(ServiceCollection serviceCollection) {
         serviceCollection.addSingleton(KickManager.class);
         serviceCollection.addConfiguration(KickConfig.class);
-        serviceCollection.addGroupConfiguration(KickLog.class);
+        serviceCollection.addGroupConfiguration(VoteLog.class);
     }
 }
