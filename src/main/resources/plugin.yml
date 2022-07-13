@@ -2,3 +2,6 @@ name: VoteKick
 version: ${project.version}
 main: rmhan.eld.votekick.VoteKick
 api-version: 1.18
+depend:
+  - ELDependenci
+  - ELDependenci-MVC
