@@ -9,7 +9,7 @@ import org.bukkit.Material;
 @ViewDescriptor(
         name = "投票頁面",
         rows = 3,
-        patterns = {"ZZZZIZZZZ","ZAZZZZZZ","ZZZZZZZAZ"},
+        patterns = {"ZZZZIZZZZ","ZAZZZZZZ","ZZZZZZZDZ"},
         cancelMove = {'I','A','D'}
 )
 
@@ -30,7 +30,7 @@ public class PanelView implements View<String>{
                         .title("§a同意")
                         .create()
         );
-        context.pattern('A')
+        context.pattern('D')
                 .components(
                         button.icon(Material.GREEN_STAINED_GLASS_PANE)
                                 .title("§c不同意")

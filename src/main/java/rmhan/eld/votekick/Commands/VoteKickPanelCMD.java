@@ -16,6 +16,7 @@ public class VoteKickPanelCMD implements CommandNode {
     @Inject
     private KickManager kickManager;
     @Inject
+    private InventoryService inventoryService;
     @Override
     public void execute(CommandSender sender) {
         if (kickManager.getStatus()){
@@ -26,11 +27,8 @@ public class VoteKickPanelCMD implements CommandNode {
             } catch (UINotFoundException e) {
                 player.sendMessage("UI not found.");
             }
-        }else{
-            sender.sendMessage("目前沒有投票被發起");
         }
     }
-    @Inject
-    private InventoryService inventoryService;
+
 
 }
