@@ -22,7 +22,7 @@ public class VoteKickPanelCMD implements CommandNode {
         if (kickManager.getStatus()){
             Player player = (Player) sender;
             try {
-                UIDispatcher dispatcher = inventoryService.getUIDispatcher("main");
+                UIDispatcher dispatcher = inventoryService.getUIDispatcher("VotePage");
                 dispatcher.openFor(player);
             } catch (UINotFoundException e) {
                 player.sendMessage("UI not found.");

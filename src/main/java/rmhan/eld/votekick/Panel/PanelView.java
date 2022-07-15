@@ -9,7 +9,7 @@ import org.bukkit.Material;
 @ViewDescriptor(
         name = "投票頁面",
         rows = 3,
-        patterns = {"ZZZZIZZZZ","ZAZZZZZZ","ZZZZZZZDZ"},
+        patterns = {"ZZZZIZZZZ","ZAZZZZZDZ","ZZZZZZZZZ"},
         cancelMove = {'I','A','D'}
 )
 
@@ -19,9 +19,9 @@ public class PanelView implements View<String>{
         ButtonFactory button = context.factory(ButtonFactory.class); // Button 是展示類組件
         context.pattern('I')
                 .components(
-                        button.icon(Material.DIAMOND_BLOCK)
+                        button.icon(Material.PLAYER_HEAD)
                                 .title("§e投票資訊")
-                                .lore(model)
+                                .lore(model.split("\n"))
                                 .create()
                 );
         context.pattern('A')
@@ -32,7 +32,7 @@ public class PanelView implements View<String>{
         );
         context.pattern('D')
                 .components(
-                        button.icon(Material.GREEN_STAINED_GLASS_PANE)
+                        button.icon(Material.RED_STAINED_GLASS_PANE)
                                 .title("§c不同意")
                                 .create()
                 );
