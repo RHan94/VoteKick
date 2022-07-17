@@ -1,4 +1,4 @@
-package rmhan.eld.votekick.Panel;
+package rmhan.eld.votekick.VotePanel;
 
 import com.ericlam.mc.eldgui.controller.UIController;
 import com.ericlam.mc.eldgui.event.ClickMapping;
