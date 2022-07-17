@@ -2,6 +2,7 @@ package rmhan.eld.votekick.LogPanel;
 
 import com.ericlam.mc.eld.annotations.InjectPool;
 import com.ericlam.mc.eld.configurations.GroupConfig;
+import com.ericlam.mc.eld.services.ConfigPoolService;
 import com.ericlam.mc.eldgui.controller.UIController;
 import com.ericlam.mc.eldgui.event.ClickMapping;
 import com.ericlam.mc.eldgui.view.BukkitView;
@@ -15,9 +16,18 @@ import java.util.ArrayList;
 
 @UIController("LogController")
 public class LogPanelController {
-    @InjectPool
+
+
     private GroupConfig<VoteLog> Logs;
-    ArrayList<VoteLog> LogsList = (ArrayList<VoteLog>) Logs.findAll();
+
+    ArrayList<VoteLog> LogsList;
+
+    @Inject
+    public LogPanelController(ConfigPoolService pool){
+        this.Logs = pool.getGroupConfig(VoteLog.class);
+        this.LogsList = (ArrayList<VoteLog>) Logs.findAll();
+    }
+
     @Inject
     private KickManager kickManager;
     private int i = 0;
